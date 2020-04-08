@@ -9,6 +9,6 @@ class Player:
         
     # string value
     def __str__(self):
-        return f"{self.name} is in {self.current_room.name}"
+        return f"{self.name} is currently located: {self.current_room.name}"
     pass
 

@@ -41,29 +41,40 @@ room['treasure'].s_to = room['narrow']
 
 # Make a new player object that is currently in the 'outside' room.
 new_player = Player("Jayne", room['outside'])
-
 directions = ['n', 's', 'e', 'w']
 
 # Write a loop that:
 
+user_prompt = None
+
+while user_prompt != "q":
     
-#
-# * Prints the current room name
-print(new_player)
+    # * Prints the current room name
+    print(new_player)
+    
+    # * Prints the current description (the textwrap module might be useful here).
+    room_description = new_player.current_room.description
+    wrapper = textwrap.TextWrapper(width=15)
+    word_list = wrapper.wrap(text=room_description)
+    for element in word_list:
+        print(element)
+        
+    # * Waits for user input and decides what to do        
+    user_prompt = (input("Where do you want to go? Type n, s, e or w OR quit (q):  "))
+    
+    # JAYNE: USER_PROMPT IS A STRING
+    print(user_prompt)
 
-# * Prints the current description (the textwrap module might be useful here).
-room_description = new_player.current_room.description
+    
+    
+    # print(user_prompt.lower())
+    
+    # If the user enters a cardinal direction, attempt to move to the room there.
+    
+    # if user_prompt.lower() == 'n':
+    
 
-wrapper = textwrap.TextWrapper(width=15) 
-  
-word_list = wrapper.wrap(text=room_description) 
-  
-for element in word_list: 
-    print(element) 
 
-# * Waits for user input and decides what to do.
-#
-# If the user enters a cardinal direction, attempt to move to the room there.
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
