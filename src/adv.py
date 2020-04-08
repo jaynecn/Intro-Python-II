@@ -63,15 +63,15 @@ while user_prompt != "q":
     user_prompt = (input("Where do you want to go? Type n, s, e or w OR quit (q):  "))
     
     # JAYNE: USER_PROMPT IS A STRING
-    print(user_prompt)
+    print(user_prompt.lower())
 
-    
-    
-    # print(user_prompt.lower())
     
     # If the user enters a cardinal direction, attempt to move to the room there.
     
-    # if user_prompt.lower() == 'n':
+    if user_prompt.lower() == 'n':
+        print("We shall go NORTH")
+        new_player = Player("Jayne", room['foyer'])
+        print(new_player.current_room)
     
 
 
