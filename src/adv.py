@@ -182,16 +182,11 @@ while user_prompt != "q":
             print("---- CHOOSE ANOTHER DIRECTION ----")
             new_player = Player("Jayne", room['treasure'])
             print(new_player.current_room)
+    # If the user enters "q", quit the game
     elif user_prompt.lower() == 'q':
-        print("Goodbye!")
+        print("Thank you for playing \nGoodbye!")
         break
+    # Print an error message if the movement isn't allowed.
     else: 
         print("---- INVALID COMMAND ----")
         print("PLEASE SELECT FROM:  n, s, e, w or q")
-        
-    
-
-
-# Print an error message if the movement isn't allowed.
-#
-# If the user enters "q", quit the game.
