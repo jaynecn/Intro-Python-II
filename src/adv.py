@@ -60,11 +60,9 @@ while user_prompt != "q":
         print(element)
         
     # * Waits for user input and decides what to do        
-    user_prompt = (input("Where do you want to go? Type n, s, e or w OR quit (q):  "))
+    user_prompt = (input("---- WHERE DO YOU WANT TO GO ? ---- \n Type n, s, e or w OR quit (q):  "))
     
     # JAYNE: USER_PROMPT IS A STRING
-    print(user_prompt.lower())
-
     
     # If the user enters a cardinal direction, attempt to move to the room there.
     
@@ -188,8 +186,8 @@ while user_prompt != "q":
         print("Goodbye!")
         break
     else: 
-        print("I do not understand that command")
-        print("Please select from n, s, e, w or q")
+        print("---- INVALID COMMAND ----")
+        print("PLEASE SELECT FROM:  n, s, e, w or q")
         
     
 
