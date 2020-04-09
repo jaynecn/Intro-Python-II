@@ -43,7 +43,6 @@ room['treasure'].s_to = room['narrow']
 # Make a new player object that is currently in the 'outside' room.
 new_player = Player("Jayne", room['outside'])
 
-# print(len(room['outside'].room_items))
 
 # CREATE VARIABLES FOR ROOMS
 outside = room['outside']
@@ -70,12 +69,10 @@ narrow.stealthy_add(torch)
 gold = Item("Gold coins", "they are worth a fortune!")
 treasure.stealthy_add(gold)
 
+# knife = Item("Knife", "pocket knife, hidden in your socks")
+# new_player.add_player_item(knife)
+
 print("\n------- WELCOME TO JAYNE'S GAME ---------\n")
-
-
-
-
-
 
 # Write a loop that:
 
@@ -94,12 +91,12 @@ while user_prompt != "q":
         print("  >    " + element)
         
     # * Waits for user input and decides what to do        
-    user_prompt = (input("\n---- WHERE DO YOU WANT TO GO ? ---- \n Type [n], [s], [e] or [w]\n OR [look]\n OR quit:(q):  "))
+    user_prompt = (input("\n---- WHAT NOW ? ---- \n[n], [s], [e] or [w] to move\n[look] to search rooms\n[inv] to see your stash\n[q] to quit:  "))
     
-    # JAYNE: USER_PROMPT IS A STRING
     
     # If the user enters a cardinal direction, attempt to move to the room there.
     
+    # NORTH
     if user_prompt.lower() == 'n':
         #OUTSIDE
         if new_player.current_room == outside:
@@ -128,6 +125,7 @@ while user_prompt != "q":
             print("---- CHOOSE ANOTHER DIRECTION ----\n")
             new_player.current_room = treasure
             print(new_player.current_room)
+    # SOUTH
     elif user_prompt.lower() == 's':
         #OUTSIDE
         if new_player.current_room == outside:
@@ -156,6 +154,7 @@ while user_prompt != "q":
             print("\n---- LET US GO SOUTH ----\n")
             new_player.current_room = narrow
             print(new_player.current_room)
+    # EAST
     elif user_prompt.lower() == 'e':
         #OUTSIDE
         if new_player.current_room == outside:
@@ -186,6 +185,7 @@ while user_prompt != "q":
             print("---- CHOOSE ANOTHER DIRECTION ----\n")
             new_player.current_room = treasure
             print(new_player.current_room)
+    # WEST
     elif user_prompt.lower() == 'w':
         #OUTSIDE
         if new_player.current_room == outside:
@@ -216,6 +216,29 @@ while user_prompt != "q":
             print("---- CHOOSE ANOTHER DIRECTION ----\n")
             new_player.current_room = treasure
             print(new_player.current_room)
+    # LOOK
+    elif user_prompt.lower() == 'look':
+        #OUTSIDE
+        if new_player.current_room == outside:
+            outside.room_inventory()
+        # FOYER
+        elif new_player.current_room == foyer:
+            foyer.room_inventory()
+        # OVERLOOK
+        elif new_player.current_room == overlook:
+            overlook.room_inventory()
+        # NARROW
+        elif new_player.current_room == narrow:
+            narrow.room_inventory()
+        # TREASURE
+        elif new_player.current_room == treasure:
+            treasure.room_inventory()
+    # INV
+    elif user_prompt.lower() == 'inv':
+        new_player.player_inventory()
+    # GRAB
+    # IF PROMPT IS EQUAL TO NAME OF ITEM IN ROOM INVENTORY, DROP FROM ROOM INVENTORY AND ADD TO PLAYERS STASH
+    
     # If the user enters "q", quit the game
     elif user_prompt.lower() == 'q':
         print("Thank you for playing \nGoodbye!")

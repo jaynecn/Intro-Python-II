@@ -14,7 +14,6 @@ class Room:
     
     def stealthy_add(self, item):
         self.item = item
-        # seitem = Item(item_name, item_description)
         self.room_items.append(item)
     
     def add_room_item(self, item):
@@ -27,9 +26,10 @@ class Room:
         if (len(self.room_items) == 0):
             return f"There's nothing in this room. That sucks.  Search other rooms!"
         elif (len(self.room_items) > 0):
-            print(f"\nLook what you found in the {self.name}:\n")
+            print(f"\n>> Look what you found at {self.name}:")
             for i in self.room_items:
-                print(f"{i}")
+                print(f"\t{i}")
+            print(f"\n")
             
             
         
