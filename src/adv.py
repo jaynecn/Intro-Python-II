@@ -1,5 +1,6 @@
 from room import Room
 from player import Player
+from item import Item
 import textwrap
 
 # Declare all the rooms
@@ -41,7 +42,40 @@ room['treasure'].s_to = room['narrow']
 
 # Make a new player object that is currently in the 'outside' room.
 new_player = Player("Jayne", room['outside'])
-directions = ['n', 's', 'e', 'w']
+
+# print(len(room['outside'].room_items))
+
+# CREATE VARIABLES FOR ROOMS
+outside = room['outside']
+foyer = room['foyer']
+overlook = room['overlook']
+narrow = room['narrow']
+treasure = room['treasure']
+
+
+# ADD ITEMS TO ROOMS
+axe = Item("AXE", "by jove, it is sharp")
+compass = Item("Compass", "weathered, but still works")
+outside.stealthy_add(axe)
+outside.stealthy_add(compass)
+
+foyer.stealthy_add(compass)
+
+binoculars = Item("Binoculars", "handy for spying")
+overlook.stealthy_add(binoculars)
+
+torch = Item("Torch", "batteries running low")
+narrow.stealthy_add(torch)
+
+gold = Item("Gold coins", "they are worth a fortune!")
+treasure.stealthy_add(gold)
+
+print("\n------- WELCOME TO JAYNE'S GAME ---------\n")
+
+
+
+
+
 
 # Write a loop that:
 
@@ -60,7 +94,7 @@ while user_prompt != "q":
         print("  >    " + element)
         
     # * Waits for user input and decides what to do        
-    user_prompt = (input("---- WHERE DO YOU WANT TO GO ? ---- \n Type n, s, e or w OR quit (q):  "))
+    user_prompt = (input("\n---- WHERE DO YOU WANT TO GO ? ---- \n Type [n], [s], [e] or [w]\n OR [look]\n OR quit:(q):  "))
     
     # JAYNE: USER_PROMPT IS A STRING
     
@@ -68,119 +102,119 @@ while user_prompt != "q":
     
     if user_prompt.lower() == 'n':
         #OUTSIDE
-        if new_player.current_room.name == 'Outside Cave Entrance':
-            print("---- LET US GO NORTH ----")
-            new_player = Player("Jayne", room['foyer'])
+        if new_player.current_room == outside:
+            print("\n---- LET US GO NORTH ----\n")
+            new_player.current_room = foyer
             print(new_player.current_room)
         #FOYER
-        elif new_player.current_room.name == 'Foyer':
-            print("---- LET US GO NORTH ----")
-            new_player = Player("Jayne", room['overlook'])
+        elif new_player.current_room == foyer:
+            print("\n---- LET US GO NORTH ----\n")
+            new_player.current_room = overlook
             print(new_player.current_room)
         #OVERLOOK
-        elif new_player.current_room.name == 'Grand Overlook':
-            print("----     YOU SHALL NOT PASS ----")
-            print("---- CHOOSE ANOTHER DIRECTION ----")
-            new_player = Player("Jayne", room['overlook'])
+        elif new_player.current_room == overlook:
+            print("\n----     YOU SHALL NOT PASS ----")
+            print("---- CHOOSE ANOTHER DIRECTION ----\n")
+            new_player.current_room = overlook
             print(new_player.current_room)
         #NARROW
-        elif new_player.current_room.name == 'Narrow Passage':
-            print("---- LET US GO NORTH ----")
-            new_player = Player("Jayne", room['treasure'])
+        elif new_player.current_room == narrow:
+            print("\n---- LET US GO NORTH ----\n")
+            new_player.current_room = treasure
             print(new_player.current_room)
         #TREASURE
-        elif new_player.current_room.name == 'Treasure Chamber':
-            print("----    YOU SHALL NOT PASS ----")
-            print("---- CHOOSE ANOTHER DIRECTION ----")
-            new_player = Player("Jayne", room['treasure'])
+        elif new_player.current_room == treasure:
+            print("\n----    YOU SHALL NOT PASS ----")
+            print("---- CHOOSE ANOTHER DIRECTION ----\n")
+            new_player.current_room = treasure
             print(new_player.current_room)
     elif user_prompt.lower() == 's':
         #OUTSIDE
-        if new_player.current_room.name == 'Outside Cave Entrance':
-            print("----    YOU SHALL NOT PASS ----")
-            print("---- CHOOSE ANOTHER DIRECTION ----")
-            new_player = Player("Jayne", room['outside'])
+        if new_player.current_room == outside:
+            print("\n----    YOU SHALL NOT PASS ----")
+            print("---- CHOOSE ANOTHER DIRECTION ----\n")
+            new_player.current_room = outside
             print(new_player.current_room)
         #FOYER
-        elif new_player.current_room.name == 'Foyer':
-            print("---- LET US GO SOUTH ----")
-            new_player = Player("Jayne", room['outside'])
+        elif new_player.current_room == foyer:
+            print("\n---- LET US GO SOUTH ----\n")
+            new_player.current_room = outside
             print(new_player.current_room)
         #OVERLOOK
-        elif new_player.current_room.name == 'Grand Overlook':
-            print("---- LET US GO SOUTH ----")
-            new_player = Player("Jayne", room['foyer'])
+        elif new_player.current_room == overlook:
+            print("\n---- LET US GO SOUTH ----\n")
+            new_player.current_room = foyer
             print(new_player.current_room)
         #NARROW
-        elif new_player.current_room.name == 'Narrow Passage':
-            print("----   YOU SHALL NOT PASS ----")
-            print("---- CHOOSE ANOTHER DIRECTION ----")
-            new_player = Player("Jayne", room['narrow'])
+        elif new_player.current_room == narrow:
+            print("\n----   YOU SHALL NOT PASS ----")
+            print("---- CHOOSE ANOTHER DIRECTION ----\n")
+            new_player.current_room = narrow
             print(new_player.current_room)
         #TREASURE
-        elif new_player.current_room.name == 'Treasure Chamber':
-            print("---- LET US GO SOUTH ----")
-            new_player = Player("Jayne", room['narrow'])
+        elif new_player.current_room == treasure:
+            print("\n---- LET US GO SOUTH ----\n")
+            new_player.current_room = narrow
             print(new_player.current_room)
     elif user_prompt.lower() == 'e':
         #OUTSIDE
-        if new_player.current_room.name == 'Outside Cave Entrance':
-            print("----    YOU SHALL NOT PASS ----")
-            print("---- CHOOSE ANOTHER DIRECTION ----")
-            new_player = Player("Jayne", room['outside'])
+        if new_player.current_room == outside:
+            print("\n----    YOU SHALL NOT PASS ----")
+            print("---- CHOOSE ANOTHER DIRECTION ----\n")
+            new_player.current_room = outside
             print(new_player.current_room)
         #FOYER
-        elif new_player.current_room.name == 'Foyer':
-            print("---- LET US GO EAST ----")
-            new_player = Player("Jayne", room['narrow'])
+        elif new_player.current_room == foyer:
+            print("\n---- LET US GO EAST ----\n")
+            new_player.current_room = narrow
             print(new_player.current_room)
         #OVERLOOK
-        elif new_player.current_room.name == 'Grand Overlook':
-            print("----    YOU SHALL NOT PASS ----")
-            print("---- CHOOSE ANOTHER DIRECTION ----")
-            new_player = Player("Jayne", room['overlook'])
+        elif new_player.current_room == overlook:
+            print("\n----    YOU SHALL NOT PASS ----")
+            print("---- CHOOSE ANOTHER DIRECTION ----\n")
+            new_player.current_room = overlook
             print(new_player.current_room)
         #NARROW
-        elif new_player.current_room.name == 'Narrow Passage':
-            print("----    YOU SHALL NOT PASS ----")
-            print("---- CHOOSE ANOTHER DIRECTION ----")
-            new_player = Player("Jayne", room['narrow'])
+        elif new_player.current_room == narrow:
+            print("\n----    YOU SHALL NOT PASS ----")
+            print("---- CHOOSE ANOTHER DIRECTION ----\n")
+            new_player.current_room = narrow
             print(new_player.current_room)
         #TREASURE
-        elif new_player.current_room.name == 'Treasure Chamber':
-            print("----    YOU SHALL NOT PASS ----")
-            print("---- CHOOSE ANOTHER DIRECTION ----")
-            new_player = Player("Jayne", room['treasure'])
+        elif new_player.current_room == treasure:
+            print("\n----    YOU SHALL NOT PASS ----")
+            print("---- CHOOSE ANOTHER DIRECTION ----\n")
+            new_player.current_room = treasure
             print(new_player.current_room)
     elif user_prompt.lower() == 'w':
         #OUTSIDE
-        if new_player.current_room.name == 'Outside Cave Entrance':
-            print("----    YOU SHALL NOT PASS ----")
-            print("---- CHOOSE ANOTHER DIRECTION ----")
-            new_player = Player("Jayne", room['outside'])
+        if new_player.current_room == outside:
+            print("\n----    YOU SHALL NOT PASS ----")
+            print("---- CHOOSE ANOTHER DIRECTION ----\n")
+            new_player.current_room = outside
             print(new_player.current_room)
         #FOYER
-        elif new_player.current_room.name == 'Foyer':
-            print("----    YOU SHALL NOT PASS ----")
-            print("---- CHOOSE ANOTHER DIRECTION ----")
-            new_player = Player("Jayne", room['foyer'])
+        elif new_player.current_room == foyer:
+            print("\n----    YOU SHALL NOT PASS ----")
+            print("---- CHOOSE ANOTHER DIRECTION ----\n")
+            new_player.current_room = foyer
             print(new_player.current_room)
         #OVERLOOK
-        elif new_player.current_room.name == 'Grand Overlook':
-            print("----    YOU SHALL NOT PASS ----")
-            print("---- CHOOSE ANOTHER DIRECTION ----")
-            new_player = Player("Jayne", room['overlook'])
+        elif new_player.current_room == overlook:
+            print("\n----    YOU SHALL NOT PASS ----")
+            print("---- CHOOSE ANOTHER DIRECTION ----\n")
+            new_player.current_room = overlook
             print(new_player.current_room)
         #NARROW
-        elif new_player.current_room.name == 'Narrow Passage':
-            print("---- LET US GO WEST ----")
-            new_player = Player("Jayne", room['foyer'])
+        elif new_player.current_room == narrow:
+            print("\n---- LET US GO WEST ----\n")
+            new_player.current_room = foyer
             print(new_player.current_room)
         #TREASURE
-        elif new_player.current_room.name == 'Treasure Chamber':
-            print("----    YOU SHALL NOT PASS ----")
-            print("---- CHOOSE ANOTHER DIRECTION ----")
-            new_player = Player("Jayne", room['treasure'])
+        elif new_player.current_room == treasure:
+            print("\n----    YOU SHALL NOT PASS ----")
+            print("---- CHOOSE ANOTHER DIRECTION ----\n")
+            new_player.current_room = treasure
             print(new_player.current_room)
     # If the user enters "q", quit the game
     elif user_prompt.lower() == 'q':
