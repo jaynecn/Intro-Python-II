@@ -19,6 +19,13 @@ class Player:
         for i in self.player_items:
             print(f"{i.name} added to {self.name}'s stash")
     
+    def drop_player_item(self, item):
+        self.item = item
+        self.player_items.remove(item)
+        print(f"{item.name} removed from your stash")
+        self.current_room.room_items.append(item)
+        print(f"{item.name} left in {self.current_room}")
+    
     def player_inventory(self):
         if (len(self.player_items) >= 1):
             print(f"\n>> Here is what you have on your person:")

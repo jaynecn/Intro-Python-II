@@ -69,8 +69,8 @@ narrow.stealthy_add(torch)
 gold = Item("Gold coins", "they are worth a fortune!")
 treasure.stealthy_add(gold)
 
-# knife = Item("Knife", "pocket knife, hidden in your socks")
-# new_player.add_player_item(knife)
+knife = Item("Knife", "pocket knife, hidden in your socks")
+new_player.add_player_item(knife)
 
 print("\n------- WELCOME TO JAYNE'S GAME ---------\n")
 
@@ -236,8 +236,16 @@ while user_prompt != "q":
     # INV
     elif user_prompt.lower() == 'inv':
         new_player.player_inventory()
-    # GRAB
+    # VERB NOUN
+    elif user_prompt.lower()[:4] == 'grab':
+        print("Grab!")
+        # GRAB
+    
     # IF PROMPT IS EQUAL TO NAME OF ITEM IN ROOM INVENTORY, DROP FROM ROOM INVENTORY AND ADD TO PLAYERS STASH
+    # DROP
+    elif user_prompt.lower()[:4] == 'drop':
+        print("Drop!")
+        new_player.drop_player_item(knife)
     
     # If the user enters "q", quit the game
     elif user_prompt.lower() == 'q':

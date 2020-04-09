@@ -21,6 +21,7 @@ class Room:
         self.room_items.append(item)
         for i in self.room_items:
             print(f"{i.name} added to {self.name}")
+    
         
     def room_inventory(self):
         if (len(self.room_items) == 0):
