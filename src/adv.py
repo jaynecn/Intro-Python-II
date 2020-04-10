@@ -53,11 +53,10 @@ treasure = room['treasure']
 
 
 # ADD ITEMS TO ROOMS
-axe = Item("AXE", "by jove, it is sharp")
-compass = Item("Compass", "weathered, but still works")
+axe = Item("Axe", "by jove, it is sharp")
 outside.stealthy_add(axe)
-outside.stealthy_add(compass)
 
+compass = Item("Compass", "weathered, but still works")
 foyer.stealthy_add(compass)
 
 binoculars = Item("Binoculars", "handy for spying")
@@ -66,11 +65,11 @@ overlook.stealthy_add(binoculars)
 torch = Item("Torch", "batteries running low")
 narrow.stealthy_add(torch)
 
-gold = Item("Gold coins", "they are worth a fortune!")
+gold = Item("Gold", "a small canvas sack filled with gold coins, they are worth a fortune!")
 treasure.stealthy_add(gold)
 
-knife = Item("Knife", "pocket knife, hidden in your socks")
-new_player.add_player_item(knife)
+knife = Item("Knife", "pocket knife, could be hidden in your socks")
+new_player.stealthy_add(knife)
 
 print("\n------- WELCOME TO JAYNE'S GAME ---------\n")
 
@@ -90,8 +89,10 @@ while user_prompt != "q":
     for element in word_list:
         print("  >    " + element)
         
+    # USER PROMPT
+        
     # * Waits for user input and decides what to do        
-    user_prompt = (input("\n---- WHAT NOW ? ---- \n[n], [s], [e] or [w] to move\n[look] to search rooms\n[inv] to see your stash\n[q] to quit:  "))
+    user_prompt = (input("\n---- WHAT NOW ? ---- \n[n], [s], [e] or [w] to move\n[look] to search room\n[inv] to see your stash\n[grab] [item] to grab\n[drop] [item] to drop\n[q] to quit:  "))
     
     
     # If the user enters a cardinal direction, attempt to move to the room there.
@@ -237,15 +238,58 @@ while user_prompt != "q":
     elif user_prompt.lower() == 'inv':
         new_player.player_inventory()
     # VERB NOUN
-    elif user_prompt.lower()[:4] == 'grab':
-        print("Grab!")
-        # GRAB
     
-    # IF PROMPT IS EQUAL TO NAME OF ITEM IN ROOM INVENTORY, DROP FROM ROOM INVENTORY AND ADD TO PLAYERS STASH
+    # GRAB
+    elif user_prompt.lower()[:4] == 'grab':
+        # GRAB
+        grab_separate_words = user_prompt.split(' ')
+        command = grab_separate_words[0]
+        item_to_grab = grab_separate_words[1].lower()
+        
+        current_room_items = [f"{data.name.lower()}" for data in new_player.current_room.room_items]
+        
+        if item_to_grab in current_room_items:
+            print(f"\n\t>> YOU GRAB: {item_to_grab}")
+            if item_to_grab == 'axe':
+                new_player.add_player_item(axe)
+            elif item_to_grab == 'compass':
+                new_player.add_player_item(compass)
+            elif item_to_grab == 'binoculars':
+                new_player.add_player_item(binoculars)
+            elif item_to_grab == 'torch':
+                new_player.add_player_item(torch)
+            elif item_to_grab == 'gold':
+                new_player.add_player_item(gold)
+            elif item_to_grab == 'knife':
+                new_player.add_player_item(knife)  
+        else:
+            print("\nThat item is not found here!!\nSearch for it elsewhere\n")
     # DROP
     elif user_prompt.lower()[:4] == 'drop':
         print("Drop!")
-        new_player.drop_player_item(knife)
+        # new_player.drop_player_item(knife)
+        grab_separate_words = user_prompt.split(' ')
+        command = grab_separate_words[0]
+        item_to_grab = grab_separate_words[1].lower()
+        
+        current_room_items = [f"{data.name.lower()}" for data in new_player.player_items]
+        
+        if item_to_grab in current_room_items:
+            print(f"\t>> YOU DROP: {item_to_grab}")
+            if item_to_grab == 'axe':
+                new_player.drop_player_item(axe)
+            elif item_to_grab == 'compass':
+                new_player.drop_player_item(compass)
+            elif item_to_grab == 'binoculars':
+                new_player.drop_player_item(binoculars)
+            elif item_to_grab == 'torch':
+                new_player.drop_player_item(torch)
+            elif item_to_grab == 'gold':
+                new_player.drop_player_item(gold)
+            elif item_to_grab == 'knife':
+                new_player.drop_player_item(knife)    
+        else:
+            print("\nThat item is not found here!!\nSearch for it elsewhere\n")
     
     # If the user enters "q", quit the game
     elif user_prompt.lower() == 'q':

@@ -20,17 +20,19 @@ class Room:
         self.item = item
         self.room_items.append(item)
         for i in self.room_items:
-            print(f"{i.name} added to {self.name}")
-    
+            print(f"{i.name} added to {self.name}") 
         
     def room_inventory(self):
         if (len(self.room_items) == 0):
-            return f"There's nothing in this room. That sucks.  Search other rooms!"
+            print(f"\n\t>> There's nothing in this room. That sucks.  Search other rooms!\n")
         elif (len(self.room_items) > 0):
             print(f"\n>> Look what you found at {self.name}:")
             for i in self.room_items:
                 print(f"\t{i}")
             print(f"\n")
+        else:
+            print(f"\n\t>> There's nothing in this room. That sucks.  Search other rooms!\n")
+            
             
             
         
