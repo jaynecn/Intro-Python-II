@@ -237,11 +237,74 @@ while user_prompt != "q":
     # INV
     elif user_prompt.lower() == 'inv':
         new_player.player_inventory()
+        
+    # ITEM ONLY
     
+    # AXE
+    elif user_prompt.lower() == 'axe':
+        typed_item = user_prompt.lower()
+        
+        player_items = [f"{data.name.lower()}" for data in new_player.player_items]
+        
+        if typed_item in player_items:
+            print(f"\n\tWhat do you want me to do with {typed_item}? \n\tYou need to tell me!!\n")
+        else:
+            print(f"\n\tIf you want to do something with {typed_item}, YOU NEED TO GO FIND IT FIRST!!!!")
+    # COMPASS
+    elif user_prompt.lower() == 'compass':
+        typed_item = user_prompt.lower()
+        
+        player_items = [f"{data.name.lower()}" for data in new_player.player_items]
+        
+        if typed_item in player_items:
+            print(f"\n\tWhat do you want me to do with {typed_item}? \n\tYou need to tell me!!\n")
+        else:
+            print(f"\n\tIf you want to do something with {typed_item}, YOU NEED TO GO FIND IT FIRST!!!!")
+    # BINOCULARS
+    elif user_prompt.lower() == 'binoculars':
+        typed_item = user_prompt.lower()
+        
+        player_items = [f"{data.name.lower()}" for data in new_player.player_items]
+        
+        if typed_item in player_items:
+            print(f"\n\tWhat do you want me to do with {typed_item}? \n\tYou need to tell me!!\n")
+        else:
+            print(f"\n\tIf you want to do something with {typed_item}, YOU NEED TO GO FIND IT FIRST!!!!")
+    # TORCH
+    elif user_prompt.lower() == 'torch':
+        typed_item = user_prompt.lower()
+        
+        player_items = [f"{data.name.lower()}" for data in new_player.player_items]
+        
+        if typed_item in player_items:
+            print(f"\n\tWhat do you want me to do with {typed_item}? \n\tYou need to tell me!!\n")
+        else:
+            print(f"\n\tIf you want to do something with {typed_item}, YOU NEED TO GO FIND IT FIRST!!!!")
+    # GOLD
+    elif user_prompt.lower() == 'gold':
+        typed_item = user_prompt.lower()
+        
+        player_items = [f"{data.name.lower()}" for data in new_player.player_items]
+        
+        if typed_item in player_items:
+            print(f"\n\tWhat do you want me to do with {typed_item}? \n\tYou need to tell me!!\n")
+        else:
+            print(f"\n\tIf you want to do something with {typed_item}, YOU NEED TO GO FIND IT FIRST!!!!")
+    # KNIFE
+    elif user_prompt.lower() == 'knife':
+        typed_item = user_prompt.lower()
+        
+        player_items = [f"{data.name.lower()}" for data in new_player.player_items]
+        
+        if typed_item in player_items:
+            print(f"\n\t>> What do you want me to do with {typed_item}? \n\t>> YOU NEED TO TELL ME!!\n")
+        else:
+            print(f"\n\t>> If you want to do something with {typed_item}, YOU NEED TO GO FIND IT FIRST!!!!")
+        
     # VERB NOUN
     
     # GRAB ONLY
-    elif user_prompt.lower() == 'grab':
+    if user_prompt.lower() == 'grab':
         print("\n\tGRAB WHAT..?\nYou need to tell me!!\n")
     
     # GRAB
@@ -307,5 +370,5 @@ while user_prompt != "q":
         break
     # Print an error message if the movement isn't allowed.
     else: 
-        print("---- INVALID COMMAND ----")
-        print("PLEASE SELECT FROM:  n, s, e, w or q")
+        print("\n---- INVALID COMMAND ----")
+        print("PLEASE SELECT FROM:  n, s, e, w or q\n")
