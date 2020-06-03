@@ -84,10 +84,10 @@ while user_prompt != "q":
     
     # * Prints the current description (the textwrap module might be useful here).
     room_description = new_player.current_room.description
-    wrapper = textwrap.TextWrapper(width=15)
+    wrapper = textwrap.TextWrapper(width=25)
     word_list = wrapper.wrap(text=room_description)
     for element in word_list:
-        print("  >    " + element)
+        print("  >  " + element)
         
     # USER PROMPT
         
@@ -304,7 +304,7 @@ while user_prompt != "q":
     # VERB NOUN
     
     # GRAB ONLY
-    if user_prompt.lower() == 'grab':
+    elif user_prompt.lower() == 'grab':
         print("\n\tGRAB WHAT..?\nYou need to tell me!!\n")
     
     # GRAB
@@ -370,5 +370,5 @@ while user_prompt != "q":
         break
     # Print an error message if the movement isn't allowed.
     else: 
-        print("\n---- INVALID COMMAND ----")
+        print("\n---- INVALID COMMAND ----\n")
         print("PLEASE SELECT FROM:  n, s, e, w or q\n")
