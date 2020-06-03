@@ -99,124 +99,39 @@ while user_prompt != "q":
     
     # NORTH
     if user_prompt.lower() == 'n':
-        #OUTSIDE
-        if new_player.current_room == outside:
+        if hasattr(new_player.current_room, 'n_to'):
             print("\n---- LET US GO NORTH ----\n")
-            new_player.current_room = foyer
-            print(new_player.current_room)
-        #FOYER
-        elif new_player.current_room == foyer:
-            print("\n---- LET US GO NORTH ----\n")
-            new_player.current_room = overlook
-            print(new_player.current_room)
-        #OVERLOOK
-        elif new_player.current_room == overlook:
-            print("\n----     YOU SHALL NOT PASS ----")
-            print("---- CHOOSE ANOTHER DIRECTION ----\n")
-            new_player.current_room = overlook
-            print(new_player.current_room)
-        #NARROW
-        elif new_player.current_room == narrow:
-            print("\n---- LET US GO NORTH ----\n")
-            new_player.current_room = treasure
-            print(new_player.current_room)
-        #TREASURE
-        elif new_player.current_room == treasure:
+            new_player.current_room = new_player.current_room.n_to
+        else:
             print("\n----    YOU SHALL NOT PASS ----")
             print("---- CHOOSE ANOTHER DIRECTION ----\n")
-            new_player.current_room = treasure
-            print(new_player.current_room)
+            
     # SOUTH
     elif user_prompt.lower() == 's':
-        #OUTSIDE
-        if new_player.current_room == outside:
+        if hasattr(new_player.current_room, 's_to'):
+            print("\n---- LET US GO SOUTH ----\n")
+            new_player.current_room = new_player.current_room.s_to
+        else:
             print("\n----    YOU SHALL NOT PASS ----")
             print("---- CHOOSE ANOTHER DIRECTION ----\n")
-            new_player.current_room = outside
-            print(new_player.current_room)
-        #FOYER
-        elif new_player.current_room == foyer:
-            print("\n---- LET US GO SOUTH ----\n")
-            new_player.current_room = outside
-            print(new_player.current_room)
-        #OVERLOOK
-        elif new_player.current_room == overlook:
-            print("\n---- LET US GO SOUTH ----\n")
-            new_player.current_room = foyer
-            print(new_player.current_room)
-        #NARROW
-        elif new_player.current_room == narrow:
-            print("\n----   YOU SHALL NOT PASS ----")
-            print("---- CHOOSE ANOTHER DIRECTION ----\n")
-            new_player.current_room = narrow
-            print(new_player.current_room)
-        #TREASURE
-        elif new_player.current_room == treasure:
-            print("\n---- LET US GO SOUTH ----\n")
-            new_player.current_room = narrow
-            print(new_player.current_room)
     # EAST
     elif user_prompt.lower() == 'e':
-        #OUTSIDE
-        if new_player.current_room == outside:
-            print("\n----    YOU SHALL NOT PASS ----")
-            print("---- CHOOSE ANOTHER DIRECTION ----\n")
-            new_player.current_room = outside
-            print(new_player.current_room)
-        #FOYER
-        elif new_player.current_room == foyer:
+        if hasattr(new_player.current_room, 'e_to'):
             print("\n---- LET US GO EAST ----\n")
-            new_player.current_room = narrow
-            print(new_player.current_room)
-        #OVERLOOK
-        elif new_player.current_room == overlook:
+            new_player.current_room = new_player.current_room.e_to
+        else:
             print("\n----    YOU SHALL NOT PASS ----")
             print("---- CHOOSE ANOTHER DIRECTION ----\n")
-            new_player.current_room = overlook
-            print(new_player.current_room)
-        #NARROW
-        elif new_player.current_room == narrow:
-            print("\n----    YOU SHALL NOT PASS ----")
-            print("---- CHOOSE ANOTHER DIRECTION ----\n")
-            new_player.current_room = narrow
-            print(new_player.current_room)
-        #TREASURE
-        elif new_player.current_room == treasure:
-            print("\n----    YOU SHALL NOT PASS ----")
-            print("---- CHOOSE ANOTHER DIRECTION ----\n")
-            new_player.current_room = treasure
-            print(new_player.current_room)
     # WEST
-    elif user_prompt.lower() == 'w':
-        #OUTSIDE
-        if new_player.current_room == outside:
-            print("\n----    YOU SHALL NOT PASS ----")
-            print("---- CHOOSE ANOTHER DIRECTION ----\n")
-            new_player.current_room = outside
-            print(new_player.current_room)
-        #FOYER
-        elif new_player.current_room == foyer:
-            print("\n----    YOU SHALL NOT PASS ----")
-            print("---- CHOOSE ANOTHER DIRECTION ----\n")
-            new_player.current_room = foyer
-            print(new_player.current_room)
-        #OVERLOOK
-        elif new_player.current_room == overlook:
-            print("\n----    YOU SHALL NOT PASS ----")
-            print("---- CHOOSE ANOTHER DIRECTION ----\n")
-            new_player.current_room = overlook
-            print(new_player.current_room)
-        #NARROW
-        elif new_player.current_room == narrow:
+    if user_prompt.lower() == 'w':
+        if hasattr(new_player.current_room, 'w_to'):
             print("\n---- LET US GO WEST ----\n")
-            new_player.current_room = foyer
-            print(new_player.current_room)
-        #TREASURE
-        elif new_player.current_room == treasure:
+            new_player.current_room = new_player.current_room.w_to
+        else:
             print("\n----    YOU SHALL NOT PASS ----")
             print("---- CHOOSE ANOTHER DIRECTION ----\n")
-            new_player.current_room = treasure
-            print(new_player.current_room)
+            
+            
     # LOOK
     elif user_prompt.lower() == 'look':
         #OUTSIDE
@@ -369,6 +284,6 @@ while user_prompt != "q":
         print("Thank you for playing \nGoodbye!")
         break
     # Print an error message if the movement isn't allowed.
-    else: 
+    else:
         print("\n---- INVALID COMMAND ----\n")
         print("PLEASE SELECT FROM:  n, s, e, w or q\n")
