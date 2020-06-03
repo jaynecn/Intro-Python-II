@@ -92,7 +92,7 @@ while user_prompt != "q":
     # USER PROMPT
         
     # * Waits for user input and decides what to do        
-    user_prompt = (input("\n---- WHAT NOW ? ---- \n[n], [s], [e] or [w] to move\n[look] to search room\n[inv] to see your stash\n[grab] [item] to grab\n[drop] [item] to drop\n[q] to quit:  "))
+    user_prompt = (input("\n---- WHAT NOW ? ---- \n[n], [s], [e] or [w] to move\n\n[look] to search room\n[inv] to see your stash\n[grab] [item] to grab\n[drop] [item] to drop\n[q] to quit:  "))
     
     
     # If the user enters a cardinal direction, attempt to move to the room there.
@@ -237,7 +237,12 @@ while user_prompt != "q":
     # INV
     elif user_prompt.lower() == 'inv':
         new_player.player_inventory()
+    
     # VERB NOUN
+    
+    # GRAB ONLY
+    elif user_prompt.lower() == 'grab':
+        print("\n\tGRAB WHAT..?\nYou need to tell me!!\n")
     
     # GRAB
     elif user_prompt.lower()[:4] == 'grab':
@@ -264,9 +269,14 @@ while user_prompt != "q":
                 new_player.add_player_item(knife)  
         else:
             print("\nThat item is not found here!!\nSearch for it elsewhere\n")
+
+    # DROP ONLY
+    elif user_prompt.lower() == 'drop':
+        print("\n\tDROP WHAT..?\nYou need to specify - I'm not psychic!\n")
+    
     # DROP
     elif user_prompt.lower()[:4] == 'drop':
-        print("Drop!")
+        print("\nDrop!")
         # new_player.drop_player_item(knife)
         grab_separate_words = user_prompt.split(' ')
         command = grab_separate_words[0]
