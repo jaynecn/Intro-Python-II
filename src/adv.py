@@ -94,6 +94,7 @@ while user_prompt != "q":
     # * Waits for user input and decides what to do        
     user_prompt = (input("\n---- WHAT NOW ? ---- \n[n], [s], [e] or [w] to move\n\n[look] to search room\n[inv] to see your stash\n[grab] [item] to grab\n[drop] [item] to drop\n[q] to quit:  "))
     
+    nope ="\n----     YOU SHALL NOT PASS ----\n---- CHOOSE ANOTHER DIRECTION ----\n"
     
     # If the user enters a cardinal direction, attempt to move to the room there.
     
@@ -111,9 +112,7 @@ while user_prompt != "q":
             print(new_player.current_room)
         #OVERLOOK
         elif new_player.current_room == overlook:
-            print("\n----     YOU SHALL NOT PASS ----")
-            print("---- CHOOSE ANOTHER DIRECTION ----\n")
-            new_player.current_room = overlook
+            print(nope)
             print(new_player.current_room)
         #NARROW
         elif new_player.current_room == narrow:
@@ -122,17 +121,13 @@ while user_prompt != "q":
             print(new_player.current_room)
         #TREASURE
         elif new_player.current_room == treasure:
-            print("\n----    YOU SHALL NOT PASS ----")
-            print("---- CHOOSE ANOTHER DIRECTION ----\n")
-            new_player.current_room = treasure
+            print(nope)
             print(new_player.current_room)
     # SOUTH
     elif user_prompt.lower() == 's':
         #OUTSIDE
         if new_player.current_room == outside:
-            print("\n----    YOU SHALL NOT PASS ----")
-            print("---- CHOOSE ANOTHER DIRECTION ----\n")
-            new_player.current_room = outside
+            print(nope)
             print(new_player.current_room)
         #FOYER
         elif new_player.current_room == foyer:
@@ -146,9 +141,7 @@ while user_prompt != "q":
             print(new_player.current_room)
         #NARROW
         elif new_player.current_room == narrow:
-            print("\n----   YOU SHALL NOT PASS ----")
-            print("---- CHOOSE ANOTHER DIRECTION ----\n")
-            new_player.current_room = narrow
+            print(nope)
             print(new_player.current_room)
         #TREASURE
         elif new_player.current_room == treasure:
@@ -159,9 +152,7 @@ while user_prompt != "q":
     elif user_prompt.lower() == 'e':
         #OUTSIDE
         if new_player.current_room == outside:
-            print("\n----    YOU SHALL NOT PASS ----")
-            print("---- CHOOSE ANOTHER DIRECTION ----\n")
-            new_player.current_room = outside
+            print(nope)
             print(new_player.current_room)
         #FOYER
         elif new_player.current_room == foyer:
@@ -170,41 +161,29 @@ while user_prompt != "q":
             print(new_player.current_room)
         #OVERLOOK
         elif new_player.current_room == overlook:
-            print("\n----    YOU SHALL NOT PASS ----")
-            print("---- CHOOSE ANOTHER DIRECTION ----\n")
-            new_player.current_room = overlook
+            print(nope)
             print(new_player.current_room)
         #NARROW
         elif new_player.current_room == narrow:
-            print("\n----    YOU SHALL NOT PASS ----")
-            print("---- CHOOSE ANOTHER DIRECTION ----\n")
-            new_player.current_room = narrow
+            print(nope)
             print(new_player.current_room)
         #TREASURE
         elif new_player.current_room == treasure:
-            print("\n----    YOU SHALL NOT PASS ----")
-            print("---- CHOOSE ANOTHER DIRECTION ----\n")
-            new_player.current_room = treasure
+            print(nope)
             print(new_player.current_room)
     # WEST
     elif user_prompt.lower() == 'w':
         #OUTSIDE
         if new_player.current_room == outside:
-            print("\n----    YOU SHALL NOT PASS ----")
-            print("---- CHOOSE ANOTHER DIRECTION ----\n")
-            new_player.current_room = outside
+            print(nope)
             print(new_player.current_room)
         #FOYER
         elif new_player.current_room == foyer:
-            print("\n----    YOU SHALL NOT PASS ----")
-            print("---- CHOOSE ANOTHER DIRECTION ----\n")
-            new_player.current_room = foyer
+            print(nope)
             print(new_player.current_room)
         #OVERLOOK
         elif new_player.current_room == overlook:
-            print("\n----    YOU SHALL NOT PASS ----")
-            print("---- CHOOSE ANOTHER DIRECTION ----\n")
-            new_player.current_room = overlook
+            print(nope)
             print(new_player.current_room)
         #NARROW
         elif new_player.current_room == narrow:
@@ -213,10 +192,9 @@ while user_prompt != "q":
             print(new_player.current_room)
         #TREASURE
         elif new_player.current_room == treasure:
-            print("\n----    YOU SHALL NOT PASS ----")
-            print("---- CHOOSE ANOTHER DIRECTION ----\n")
-            new_player.current_room = treasure
+            print(nope)
             print(new_player.current_room)
+            
     # LOOK
     elif user_prompt.lower() == 'look':
         #OUTSIDE
@@ -316,6 +294,8 @@ while user_prompt != "q":
         
         current_room_items = [f"{data.name.lower()}" for data in new_player.current_room.room_items]
         
+        player_items = [f"{data.name.lower()}" for data in new_player.player_items]
+        
         if item_to_grab in current_room_items:
             print(f"\n\t>> YOU GRAB: {item_to_grab}")
             if item_to_grab == 'axe':
@@ -329,7 +309,11 @@ while user_prompt != "q":
             elif item_to_grab == 'gold':
                 new_player.add_player_item(gold)
             elif item_to_grab == 'knife':
-                new_player.add_player_item(knife)  
+                new_player.add_player_item(knife)
+        
+        elif item_to_grab in player_items:
+            print(f"\n>> You already have --{item_to_grab}-- in your stash, ya numpty!!\n\t>> Type [inv] to see whatcha got!\n")
+             
         else:
             print("\nThat item is not found here!!\nSearch for it elsewhere\n")
 
