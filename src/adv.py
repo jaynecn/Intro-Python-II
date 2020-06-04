@@ -247,9 +247,9 @@ while user_prompt != "q":
         player_items = [f"{data.name.lower()}" for data in new_player.player_items]
         
         if typed_item in player_items:
-            print(f"\n\tWhat do you want me to do with {typed_item}? \n\tYou need to tell me!!\n")
+            print(f"\n\t>> What do you want me to do with {typed_item}? \n\t>> You need to tell me!!\n")
         else:
-            print(f"\n\tIf you want to do something with {typed_item}, YOU NEED TO GO FIND IT FIRST!!!!")
+            print(f"\n\tIf you want to do something with {typed_item}, YOU NEED TO GO FIND IT FIRST!!!!\n")
     # COMPASS
     elif user_prompt.lower() == 'compass':
         typed_item = user_prompt.lower()
@@ -257,9 +257,9 @@ while user_prompt != "q":
         player_items = [f"{data.name.lower()}" for data in new_player.player_items]
         
         if typed_item in player_items:
-            print(f"\n\tWhat do you want me to do with {typed_item}? \n\tYou need to tell me!!\n")
+            print(f"\n\t>> What do you want me to do with {typed_item}? \n\t>> You need to tell me!!\n")
         else:
-            print(f"\n\tIf you want to do something with {typed_item}, YOU NEED TO GO FIND IT FIRST!!!!")
+            print(f"\n\tIf you want to do something with {typed_item}, YOU NEED TO GO FIND IT FIRST!!!!\n")
     # BINOCULARS
     elif user_prompt.lower() == 'binoculars':
         typed_item = user_prompt.lower()
@@ -267,9 +267,9 @@ while user_prompt != "q":
         player_items = [f"{data.name.lower()}" for data in new_player.player_items]
         
         if typed_item in player_items:
-            print(f"\n\tWhat do you want me to do with {typed_item}? \n\tYou need to tell me!!\n")
+            print(f"\n\t>> What do you want me to do with {typed_item}? \n\t>> You need to tell me!!\n")
         else:
-            print(f"\n\tIf you want to do something with {typed_item}, YOU NEED TO GO FIND IT FIRST!!!!")
+            print(f"\n\tIf you want to do something with {typed_item}, YOU NEED TO GO FIND IT FIRST!!!!\n")
     # TORCH
     elif user_prompt.lower() == 'torch':
         typed_item = user_prompt.lower()
@@ -277,9 +277,9 @@ while user_prompt != "q":
         player_items = [f"{data.name.lower()}" for data in new_player.player_items]
         
         if typed_item in player_items:
-            print(f"\n\tWhat do you want me to do with {typed_item}? \n\tYou need to tell me!!\n")
+            print(f"\n\t>> What do you want me to do with {typed_item}? \n\t>> You need to tell me!!\n")
         else:
-            print(f"\n\tIf you want to do something with {typed_item}, YOU NEED TO GO FIND IT FIRST!!!!")
+            print(f"\n\tIf you want to do something with {typed_item}, YOU NEED TO GO FIND IT FIRST!!!!\n")
     # GOLD
     elif user_prompt.lower() == 'gold':
         typed_item = user_prompt.lower()
@@ -287,9 +287,9 @@ while user_prompt != "q":
         player_items = [f"{data.name.lower()}" for data in new_player.player_items]
         
         if typed_item in player_items:
-            print(f"\n\tWhat do you want me to do with {typed_item}? \n\tYou need to tell me!!\n")
+            print(f"\n\t>> What do you want me to do with {typed_item}? \n\t>> You need to tell me!!\n")
         else:
-            print(f"\n\tIf you want to do something with {typed_item}, YOU NEED TO GO FIND IT FIRST!!!!")
+            print(f"\n\tIf you want to do something with {typed_item}, YOU NEED TO GO FIND IT FIRST!!!!\n")
     # KNIFE
     elif user_prompt.lower() == 'knife':
         typed_item = user_prompt.lower()
@@ -297,9 +297,9 @@ while user_prompt != "q":
         player_items = [f"{data.name.lower()}" for data in new_player.player_items]
         
         if typed_item in player_items:
-            print(f"\n\t>> What do you want me to do with {typed_item}? \n\t>> YOU NEED TO TELL ME!!\n")
+            print(f"\n\t>> What do you want me to do with {typed_item}? \n\t>> You need to tell me!!\n")
         else:
-            print(f"\n\t>> If you want to do something with {typed_item}, YOU NEED TO GO FIND IT FIRST!!!!")
+            print(f"\n\tIf you want to do something with {typed_item}, YOU NEED TO GO FIND IT FIRST!!!!\n")
         
     # VERB NOUN
     
