@@ -71,6 +71,13 @@ treasure.stealthy_add(gold)
 knife = Item("Knife", "pocket knife, could be hidden in your socks")
 new_player.stealthy_add(knife)
 
+spyglass = Item("Spyglass", "useful for reading")
+narrow.stealthy_add(spyglass)
+
+note = Item("Note", "drops of blood with faint, shaky writing")
+foyer.stealthy_add(note)
+# MAKE EVERY NEW ITEM NAME ONE WORD!!!
+
 print("\n------- WELCOME TO JAYNE'S GAME ---------\n")
 
 # Write a loop that:
@@ -95,6 +102,9 @@ while user_prompt != "q":
     user_prompt = (input("\n---- WHAT NOW ? ---- \n[n], [s], [e] or [w] to move\n\n[look] to search room\n[inv] to see your stash\n[grab] [item] to grab\n[drop] [item] to drop\n[q] to quit:  "))
     
     nope ="\n----     YOU SHALL NOT PASS ----\n---- CHOOSE ANOTHER DIRECTION ----\n"
+    
+    player_items = [f"{data.name.lower()}" for data in new_player.player_items]
+    
     
     # If the user enters a cardinal direction, attempt to move to the room there.
     
@@ -215,6 +225,8 @@ while user_prompt != "q":
     # INV
     elif user_prompt.lower() == 'inv':
         new_player.player_inventory()
+        if 'note' and 'spyglass' in player_items:
+            print(f"\n\t.. [UNLOCKED]\n\tNow you have the spyglass and the note, you can select [READ] to read the note!!")
         
     # ITEM ONLY
     
@@ -222,7 +234,7 @@ while user_prompt != "q":
     elif user_prompt.lower() == 'axe':
         typed_item = user_prompt.lower()
         
-        player_items = [f"{data.name.lower()}" for data in new_player.player_items]
+        # player_items = [f"{data.name.lower()}" for data in new_player.player_items]
         
         if typed_item in player_items:
             print(f"\n\t>> What do you want me to do with {typed_item}? \n\t>> You need to tell me!!\n")
@@ -232,7 +244,7 @@ while user_prompt != "q":
     elif user_prompt.lower() == 'compass':
         typed_item = user_prompt.lower()
         
-        player_items = [f"{data.name.lower()}" for data in new_player.player_items]
+        # player_items = [f"{data.name.lower()}" for data in new_player.player_items]
         
         if typed_item in player_items:
             print(f"\n\t>> What do you want me to do with {typed_item}? \n\t>> You need to tell me!!\n")
@@ -242,7 +254,7 @@ while user_prompt != "q":
     elif user_prompt.lower() == 'binoculars':
         typed_item = user_prompt.lower()
         
-        player_items = [f"{data.name.lower()}" for data in new_player.player_items]
+        # player_items = [f"{data.name.lower()}" for data in new_player.player_items]
         
         if typed_item in player_items:
             print(f"\n\t>> What do you want me to do with {typed_item}? \n\t>> You need to tell me!!\n")
@@ -252,7 +264,7 @@ while user_prompt != "q":
     elif user_prompt.lower() == 'torch':
         typed_item = user_prompt.lower()
         
-        player_items = [f"{data.name.lower()}" for data in new_player.player_items]
+        # player_items = [f"{data.name.lower()}" for data in new_player.player_items]
         
         if typed_item in player_items:
             print(f"\n\t>> What do you want me to do with {typed_item}? \n\t>> You need to tell me!!\n")
@@ -262,7 +274,7 @@ while user_prompt != "q":
     elif user_prompt.lower() == 'gold':
         typed_item = user_prompt.lower()
         
-        player_items = [f"{data.name.lower()}" for data in new_player.player_items]
+        # player_items = [f"{data.name.lower()}" for data in new_player.player_items]
         
         if typed_item in player_items:
             print(f"\n\t>> What do you want me to do with {typed_item}? \n\t>> You need to tell me!!\n")
@@ -272,7 +284,7 @@ while user_prompt != "q":
     elif user_prompt.lower() == 'knife':
         typed_item = user_prompt.lower()
         
-        player_items = [f"{data.name.lower()}" for data in new_player.player_items]
+        # player_items = [f"{data.name.lower()}" for data in new_player.player_items]
         
         if typed_item in player_items:
             print(f"\n\t>> What do you want me to do with {typed_item}? \n\t>> You need to tell me!!\n")
@@ -294,7 +306,7 @@ while user_prompt != "q":
         
         current_room_items = [f"{data.name.lower()}" for data in new_player.current_room.room_items]
         
-        player_items = [f"{data.name.lower()}" for data in new_player.player_items]
+        # player_items = [f"{data.name.lower()}" for data in new_player.player_items]
         
         if item_to_grab in current_room_items:
             print(f"\n\t>> YOU GRAB: {item_to_grab}")
@@ -310,12 +322,18 @@ while user_prompt != "q":
                 new_player.add_player_item(gold)
             elif item_to_grab == 'knife':
                 new_player.add_player_item(knife)
+            elif item_to_grab == 'spyglass':
+                print(f"\nYou have {item_to_grab}, now go find something to read!!\n")
+                new_player.add_player_item(spyglass)
+            elif item_to_grab == 'note':
+                new_player.add_player_item(note)
         
         elif item_to_grab in player_items:
             print(f"\n>> You already have --{item_to_grab}-- in your stash, ya numpty!!\n\t>> Type [inv] to see whatcha got!\n")
              
         else:
             print("\nThat item is not found here!!\nSearch for it elsewhere\n")
+    
 
     # DROP ONLY
     elif user_prompt.lower() == 'drop':
@@ -344,10 +362,38 @@ while user_prompt != "q":
             elif item_to_grab == 'gold':
                 new_player.drop_player_item(gold)
             elif item_to_grab == 'knife':
-                new_player.drop_player_item(knife)    
+                new_player.drop_player_item(knife)
+            elif item_to_grab == 'spyglass':
+                new_player.drop_player_item(spyglass)
+            elif item_to_grab == 'note':
+                new_player.drop_player_item(note)
         else:
             print("\nThat item is not found here!!\nSearch for it elsewhere\n")
+            
+    # READ 
+    elif user_prompt.lower() == 'read':
+        # player_items = [f"{data.name.lower()}" for data in new_player.player_items]
+        
+        if 'spyglass' in player_items and 'note' in player_items:
+            print("\nHere is what the note says:\n")
+            with open('src/text.txt') as text:
+                text_doc = text.read()
+                print(text_doc)
+                print("\n")
+                text.close()
+                
+        elif 'spyglass' in player_items and 'note' not in player_items:
+            print("\nGo get the note!!\n")
+        elif 'note' in player_items and 'spyglass' not in player_items:
+            print(f"\n\t>> The note's too faint.\n\t>> You need something to help you read.\n\t>> Look around!\n")
+        else:
+            print(f"\n\t>> You can't use this.\n\t>> You ain't got the gear yet!! Go look!!!\n")
+            
+    #UNLOCK
+    # elif 'spyglass' and 'note' in player_items:
+    #     print(f"\n [UNLOCKED]\nNow you have the spyglass and the note, you can select [READ] to read the note!!")
     
+                
     # If the user enters "q", quit the game
     elif user_prompt.lower() == 'q':
         print("Thank you for playing \nGoodbye!")

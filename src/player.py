@@ -27,6 +27,7 @@ class Player:
     
     def drop_player_item(self, item):
         self.item = item
+        # print(self.item)
         self.player_items.remove(item)
         print(f"{item.name} removed from your stash")
         self.current_room.room_items.append(item)
